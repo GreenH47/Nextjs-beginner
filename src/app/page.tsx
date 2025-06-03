@@ -1,5 +1,5 @@
 // src/app/page.tsx
-import Image from "next/image";
+
 import Link from "next/link";
 
 
@@ -14,7 +14,7 @@ export default function Home() {
             {/* Content */}
             <section className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4">
                 <h1 className="text-4xl sm:text-6xl font-extrabold text-white drop-shadow-lg">
-                    Welcome to the Demo App
+                    Welcome to Green's Demo App
                 </h1>
 
                 <p className="mt-4 max-w-prose text-lg text-white/90">
@@ -24,6 +24,7 @@ export default function Home() {
                 <nav className="mt-8 flex flex-wrap justify-center gap-4">
                     <Link
                         href="https://github.com/GreenH47/Nextjs-beginner"
+                        target="_blank"
                         className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600
                        px-6 py-3 text-sm font-medium text-white shadow transition
                        hover:scale-105 hover:shadow-lg focus-visible:outline
