@@ -1,7 +1,9 @@
 # project url
-https://vercel.com/greens-projects-3e30f4e0/nextjs-beginner/HcBpKdKFWYArGJ8XZ8hUiSHsjGTN
-https://nextjs-beginner-rho.vercel.app/
-https://supabase.com/dashboard/project/pdjqoyqsgaijfclkaiux
+https://vercel.com/greens-projects-3e30f4e0/nextjs-beginner/HcBpKdKFWYArGJ8XZ8hUiSHsjGTN  
+
+https://nextjs-beginner-rho.vercel.app/  
+
+https://supabase.com/dashboard/project/pdjqoyqsgaijfclkaiux  
 
 
 # installation 安装
@@ -36,6 +38,12 @@ https://clerk.com/docs/integrations/databases/supabase
 
 # Build your own sign-up page for your Next.js app with Clerk 
 https://clerk.com/docs/references/nextjs/custom-sign-up-page 
+
+# dashboard page
+https://clerk.com/docs/references/nextjs/add-onboarding-flow  
+
+https://github.com/clerk/clerk-nextjs-onboarding-sample-app/tree/main/src/app/dashboard  
+
 
 # form submission
 ```
