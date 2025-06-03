@@ -13,6 +13,15 @@ export default function Home() {
             {/*      title="lalala"/>*/}
 
             <Link
+                href="https://github.com/GreenH47/Nextjs-beginner"
+                className="mt-6 inline-block rounded-lg bg-blue-600 px-5 py-2.5
+                   text-sm font-medium text-white shadow-sm transition
+                   hover:bg-blue-700 focus-visible:outline focus-visible:outline-2
+                   focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+                check out the code on GitHub
+            </Link>
+            <Link
                 href="/dashboard"
                 className="mt-6 inline-block rounded-lg bg-blue-600 px-5 py-2.5
                    text-sm font-medium text-white shadow-sm transition
