@@ -13,7 +13,7 @@ export default function Header() {
         <ClerkProvider>
             <header className="flex justify-between items-center p-4">
                 <h1 className="text-2xl font-bold">
-                    <a href="/public">
+                    <a href="/">
                         Green's homepage
                     </a>
                 </h1>
@@ -24,6 +24,11 @@ export default function Header() {
                                 dashboard
                             </a>
                         </li>
+                        <li>
+                            <a href="/form" className="text-blue-500 hover:underline">
+                                form
+                            </a>
+                        </li>
 
                     </ul>
                 </nav>
@@ -32,7 +37,7 @@ export default function Header() {
                     <SignUpButton/>
                 </SignedOut>
                 <SignedIn>
-                <UserButton />
+                    <UserButton />
                 </SignedIn>
             </header>
         </ClerkProvider>

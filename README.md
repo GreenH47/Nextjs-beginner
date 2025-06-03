@@ -1,3 +1,9 @@
+# project url
+https://vercel.com/greens-projects-3e30f4e0/nextjs-beginner/HcBpKdKFWYArGJ8XZ8hUiSHsjGTN
+https://nextjs-beginner-rho.vercel.app/
+https://supabase.com/dashboard/project/pdjqoyqsgaijfclkaiux
+
+
 # installation 安装
 https://nextjs.org/docs/app/getting-started/installation  
 https://www.udemy.com/course/next-js-the-complete-developers-guide/  

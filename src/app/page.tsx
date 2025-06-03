@@ -8,9 +8,9 @@ import Link from 'next/link';
 export default function Home() {
     return (
         <>
-            <Hero imgData={homeImage}
-                  imgAlt="car factory"
-                  title="lalala"/>
+            {/*<Hero imgData={homeImage}*/}
+            {/*      imgAlt="car factory"*/}
+            {/*      title="lalala"/>*/}
 
             <Link
                 href="/dashboard"
