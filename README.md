@@ -37,3 +37,10 @@ https://clerk.com/docs/integrations/databases/supabase
 # Build your own sign-up page for your Next.js app with Clerk 
 https://clerk.com/docs/references/nextjs/custom-sign-up-page 
 
+# form submission
+```
+src/app/form/
+├─ actions.ts          # server action
+├─ FormClient.tsx      #  all interactive logic lives here Single place for state & validation
+└─ page.tsx            # thin wrapper → shows user + renders <FormClient />
+```
