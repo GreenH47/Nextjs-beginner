@@ -11,3 +11,23 @@ npx create-next-app@latest
 # Project structure and organization 项目结构和组织
 https://nextjs.org/docs/app/getting-started/project-structure#folder-and-file-conventions  
 
+# style
+![3.png](docs%2F3.png)
+The hero.tsx file in a Next.js project typically defines a React component responsible 
+for rendering the hero section of a webpage. The hero section is usually the first visual 
+element users encounter, serving as an introduction to the website's content and purpose. 
+It often includes a prominent headline, a brief description, and a visually appealing 
+background image or video.
+Next.js 项目中的 hero.tsx 文件通常定义一个 React 组件，负责呈现网页的英雄部分。 
+英雄部分通常是用户遇到的第一个视觉元素，作为网站内容和目的的介绍。 它通常包括一个突出的标题、
+一个简短的描述和一个视觉上吸引人的背景图像或视频。
+
+# How to Validate Forms with Zod and React-Hook-Form 如何使用 Zod 和 React-Hook-Form 验证表单
+https://www.freecodecamp.org/news/react-form-validation-zod-react-hook-form/  
+
+# Integrate Supabase with Clerk
+https://clerk.com/docs/integrations/databases/supabase  
+
+# Build your own sign-up page for your Next.js app with Clerk 
+https://clerk.com/docs/references/nextjs/custom-sign-up-page 
+
