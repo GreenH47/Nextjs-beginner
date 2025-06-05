@@ -5,11 +5,12 @@ import { useForm } from "react-hook-form";                   // intuitive form A
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";       // RHF ↔ Zod bridge :contentReference[oaicite:1]{index=1}
 import { createMessage } from "./actions";
+import { schema } from "./schema";
 
-const schema = z.object({
-    name: z.string().min(1, "Subject is required").max(120),
-    body: z.string().min(1, "Body is required").max(5000),     // mirrors DB checks :contentReference[oaicite:2]{index=2}
-});
+// const schema = z.object({
+//     name: z.string().min(1, "Subject is required").max(120),
+//     body: z.string().min(1, "Body is required").max(5000),     // mirrors DB checks :contentReference[oaicite:2]{index=2}
+// });
 type FormValues = z.infer<typeof schema>;
 
 export default function FormClient() {

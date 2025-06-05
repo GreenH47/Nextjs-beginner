@@ -48,7 +48,18 @@ https://github.com/clerk/clerk-nextjs-onboarding-sample-app/tree/main/src/app/da
 # form submission
 ```
 src/app/form/
-├─ actions.ts          # server action
-├─ FormClient.tsx      #  all interactive logic lives here Single place for state & validation
+├─ actions.ts          # server action 
+├─ FormClient.tsx      #  all interactive logic for form state & validation
+├─ MessageClient.tsx      #  all interactive logic for message
 └─ page.tsx            # thin wrapper → shows user + renders <FormClient />
 ```
+
+# n8n webhook
+https://www.youtube.com/watch?v=IvUYJQkf6sA  
+
+![4.png](docs%2F4.png) 
+
+![5.png](docs%2F5.png)
+
+when user submits the form, it will trigger a webhook to n8n, 
+![6.png](docs%2F6.png)
