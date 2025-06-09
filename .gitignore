@@ -20,6 +20,9 @@
 /.next/
 /out/
 
+# clerk
+/.clerk/
+
 # production
 /build
 
@@ -45,3 +48,6 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+.vercel
+.env*.local

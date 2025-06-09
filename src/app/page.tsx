@@ -53,7 +53,18 @@ export default function Home() {
                        focus-visible:outline-2 focus-visible:outline-offset-2
                        focus-visible:outline-blue-600"
                     >
-                        Message Form
+                        Message Form using supabase
+                    </Link>
+
+                    <Link
+                        href="/qrcode"
+                        className="rounded-lg bg-white/90 px-6 py-3 text-sm font-medium
+                       text-blue-700 shadow transition hover:bg-white
+                       hover:scale-105 focus-visible:outline
+                       focus-visible:outline-2 focus-visible:outline-offset-2
+                       focus-visible:outline-blue-600"
+                    >
+                        qrcode Generator using n8n
                     </Link>
                 </nav>
             </section>

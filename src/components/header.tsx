@@ -30,6 +30,12 @@ export default function Header() {
                             </a>
                         </li>
 
+                        <li>
+                            <a href="/qrcode" className="text-blue-500 hover:underline">
+                                qrcode
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <SignedOut>
@@ -37,7 +43,7 @@ export default function Header() {
                     <SignUpButton/>
                 </SignedOut>
                 <SignedIn>
-                    <UserButton />
+                <UserButton />
                 </SignedIn>
             </header>
         </ClerkProvider>

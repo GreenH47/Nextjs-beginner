@@ -19,6 +19,12 @@ npx create-next-app@latest
 # Project structure and organization 项目结构和组织
 https://nextjs.org/docs/app/getting-started/project-structure#folder-and-file-conventions  
 
+# link supabase
+```shell
+npx supabase init
+npx supabase link --project-ref pdjqoyqsgaijfclkaiux
+```
+
 # style
 ![3.png](docs%2F3.png)
 The hero.tsx file in a Next.js project typically defines a React component responsible 
@@ -45,6 +51,24 @@ https://clerk.com/docs/references/nextjs/add-onboarding-flow
 https://github.com/clerk/clerk-nextjs-onboarding-sample-app/tree/main/src/app/dashboard  
 
 
+# clerk user created webhook to supabase edge function
+https://github.com/bmorrisondev/quillmate/tree/main/supabase/functions  
+![clerk-user-schema.png](docs%2Fclerk-user-schema.png)  
+
+```shell
+npx supabase functions deploy clerk-webhooks
+```
+https://supabase.com/docs/guides/functions/deploy  
+
+add header to the clerk webhook request
+```shell
+Authorization: Bearer {ANON_KEY}'
+```
+
+![clerk-user-created.png](docs%2Fclerk-user-created.png)
+
+
+
 # form submission
 ```
 src/app/form/
@@ -63,3 +87,28 @@ https://www.youtube.com/watch?v=IvUYJQkf6sA
 
 when user submits the form, it will trigger a webhook to n8n, 
 ![6.png](docs%2F6.png)
+
+````json
+{
+  "nodes": [
+    {
+      "parameters": {
+        "path": "b296398e-7ae6-45cd-8caa-5fc45e3b3b1d",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        0
+      ],
+      "id": "d3cb6c55-5640-452b-bc9f-cd02d86814d2",
+      "name": "Webhook",
+      "webhookId": "b296398e-7ae6-45cd-8caa-5fc45e3b3b1d"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+```
