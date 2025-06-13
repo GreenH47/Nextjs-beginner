@@ -88,27 +88,20 @@ https://www.youtube.com/watch?v=IvUYJQkf6sA
 when user submits the form, it will trigger a webhook to n8n, 
 ![6.png](docs%2F6.png)
 
-````json
-{
-  "nodes": [
-    {
-      "parameters": {
-        "path": "b296398e-7ae6-45cd-8caa-5fc45e3b3b1d",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        -240,
-        0
-      ],
-      "id": "d3cb6c55-5640-452b-bc9f-cd02d86814d2",
-      "name": "Webhook",
-      "webhookId": "b296398e-7ae6-45cd-8caa-5fc45e3b3b1d"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.respondToWebhook",
+# n8nui
+https://github.com/n8nui/examples  
+
+![workflow.png](docs%2Fn8nui%2Fworkflow.png)  
+
+![start.png](docs%2Fn8nui%2Fstart.png)  
+
+![monitor.png](docs%2Fn8nui%2Fmonitor.png)  
+
+![end.png](docs%2Fn8nui%2Fend.png)  
+```shell
+// Folder layout (all under `src/app/api/n8nui`):
+//   ├─ route.ts         → POST /api/n8nui          – start workflow
+//   └─ [xid]/route.ts   → GET  /api/n8nui/:xid     – poll status
+//                        → POST /api/n8nui/:xid    – resume Wait node
+// ------------------------------------------------------------
 ```

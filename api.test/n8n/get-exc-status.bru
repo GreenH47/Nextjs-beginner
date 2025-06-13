@@ -1,0 +1,19 @@
+meta {
+  name: get-exc-status
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://n8n.greenhuang.com/api/v1/executions/57?includeData=true
+  body: none
+  auth: inherit
+}
+
+params:query {
+  includeData: true
+}
+
+headers {
+  X-N8N-API-KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjY2NlNDA1Ny1lYjY2LTQxYzQtOGNlMy00YWU4YjA4NDRiODAiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzQ5NzMyNzAxfQ.izimbNxYYwJtb_Ca6FfjDF9zn9oSTW7B6sblN4SeRTQ
+}

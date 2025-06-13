@@ -36,6 +36,12 @@ export default function Header() {
                             </a>
                         </li>
 
+                        <li>
+                            <a href="/n8nui" className="text-blue-500 hover:underline">
+                                n8nui
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <SignedOut>

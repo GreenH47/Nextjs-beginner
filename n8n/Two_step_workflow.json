@@ -1,0 +1,165 @@
+{
+  "name": "Two-step-workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "n8nui",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        640,
+        300
+      ],
+      "id": "3256a30f-8f72-44da-9dd5-10dd6d9127ee",
+      "name": "start",
+      "webhookId": "75139bd6-c92c-4501-a212-e18e985f4009",
+      "notesInFlow": true,
+      "notes": "Start your workflow  \nwith a webhook and get execution.id \n\ncurl --request POST \\\n  --url 'https://n8n.greenhuang.com/webhook-test/n8nui?includeData=true'\n\n{\n  \"xid\": \"73\"\n}"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"xid\": \"{{ $execution.id}}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        860,
+        300
+      ],
+      "id": "c8557639-a363-4af8-9f27-923ac75a4e92",
+      "name": "respond with execution id"
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "httpMethod": "POST",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1080,
+        300
+      ],
+      "id": "0fc62849-ce83-4072-a901-5674ff5fa367",
+      "name": "respond after ...",
+      "webhookId": "545f240f-fbbe-4255-bd68-c22579cf80f0",
+      "notesInFlow": true,
+      "notes": "Resume Workflow: Once the user interacts with the UI, the app sends a POST to n8n's webhook again to resume the flow.\n\ncurl --request POST \\\n  --url https://n8n.greenhuang.com/webhook-waiting/73 \\\n  --header 'content-type: application/json'\n\n[\n  {\n    \"data\": \"complete\"\n  }\n]"
+    },
+    {
+      "parameters": {
+        "jsCode": "// pick a random delay between 1000 ms and 2000 ms (inclusive)\nconst minMs = 1000;\nconst maxMs = 2000;\nconst waitTimeMs = Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;\n\n// artificial delay\nawait new Promise(resolve => setTimeout(resolve, waitTimeMs));\n\n// return the result including how long we actually waited\nreturn {\n  data: 'complete',\n  waitTimeMs\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        300
+      ],
+      "id": "110400f6-e5a2-46da-b00a-1d358cda6dd3",
+      "name": "some processing",
+      "notesInFlow": true,
+      "notes": "wait 1 second"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1520,
+        300
+      ],
+      "id": "68b9a355-4527-4e31-85ce-af8e106d7da2",
+      "name": "... is complete",
+      "alwaysOutputData": true,
+      "notesInFlow": true,
+      "notes": "final response"
+    },
+    {
+      "parameters": {
+        "content": "Trigger Workflow: Your Next.js app calls an n8n Webhook to start the workflow.\nGet Execution ID: n8n returns the execution ID of the started flow.\nPause with Wait Node: The n8n flow halts at a Wait node, waiting for further input.\nCustom UI: The Next.js app tracks the flow’s progress (via executionId) and renders a dynamic UI.\nResume Workflow: Once the user interacts with the UI, the app sends a POST to n8n's webhook again to resume the flow.",
+        "height": 300,
+        "width": 820
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        720,
+        -40
+      ],
+      "id": "6d7f20a7-c572-4299-b885-deaeb5c1fbe9",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "start": {
+      "main": [
+        [
+          {
+            "node": "respond with execution id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "respond with execution id": {
+      "main": [
+        [
+          {
+            "node": "respond after ...",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "respond after ...": {
+      "main": [
+        [
+          {
+            "node": "some processing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "some processing": {
+      "main": [
+        [
+          {
+            "node": "... is complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "59252458-2f49-43ad-bbae-2c2c9184db49",
+  "meta": {
+    "instanceId": "f08c5d5487792f01b8b222cd5d582f9fe882c4e3ec4a0a4f0e59e4b99cde6c03"
+  },
+  "id": "1vFZB2kqXwNWENJS",
+  "tags": []
+}

@@ -15,7 +15,7 @@ export default clerkMiddleware(async (auth, req) => {
     const { userId, sessionClaims, redirectToSignIn } = await auth();
 
     // If the user isn't signed in and the route is private, redirect to sign-in
-    if (!userId && !isPublicRoute(req)) {
+    if (!userId && isProtectedRoute(req)) {
         return redirectToSignIn({ returnBackUrl: req.url });
     }
 
