@@ -1,0 +1,17 @@
+meta {
+  name: ai-agent
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://n8n.greenhuang.com/webhook-test/abc
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "websiteUrl":"https://networklessons.com/subnetting/what-is-subnetting"
+  }
+}

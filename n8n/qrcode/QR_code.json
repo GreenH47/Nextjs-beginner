@@ -1,0 +1,138 @@
+{
+  "name": "QR code",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "This node listens for incoming POST requests. It expects a JSON body with a 'data' property (or 'sampleData' as currently configured) which will be encoded into the QR code. You can easily adjust the webhook path. https://n8n.io/workflows/4596-qr-code-generator-via-webhook/",
+        "height": 360,
+        "width": 280
+      },
+      "id": "cca73586-ab2f-4bf4-ae85-2d76f97d8478",
+      "name": "Note for Webhook Trigger",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -700,
+        -180
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "This node makes an HTTP GET request to the QR Server API to generate the QR code image. The 'data' parameter in the URL is populated from the incoming webhook. The 'size' parameter can be adjusted here.",
+        "height": 320,
+        "width": 280,
+        "color": 2
+      },
+      "id": "2413649c-d843-4353-96d7-dc4aaa9ec87c",
+      "name": "Note for QR Code Generation",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -360,
+        -220
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "This node sends the response from the QR Server API (which is typically the QR code image data itself, or a URL to it if you change the API call) back to the original caller of the webhook. You can insert other nodes before this to save the image, send it via email, etc.",
+        "height": 340,
+        "width": 300,
+        "color": 3
+      },
+      "id": "3275139b-22ba-471f-94ee-c06e692ee09d",
+      "name": "Note for Webhook Response",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        -200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "=GET",
+        "url": "=https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{ $json.body.data }}",
+        "options": {}
+      },
+      "id": "fc301103-bccf-46fa-bff0-3042bd75de8f",
+      "name": "Generate QR Code",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -260,
+        200
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "qrcode",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "eff88040-8ba4-4ec0-9c20-e9c32f895546",
+      "name": "Receive Data Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        -580,
+        200
+      ],
+      "webhookId": "6960391c-83cf-49b3-aa8d-761cd8263d76-unique-id",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "responseDataSource": "set",
+        "options": {}
+      },
+      "id": "2fe3059b-0483-492e-ab47-f4c9cfce8f09",
+      "name": "Respond with QR Code",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        80,
+        200
+      ],
+      "typeVersion": 1.2
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Generate QR Code": {
+      "main": [
+        [
+          {
+            "node": "Respond with QR Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Data Webhook": {
+      "main": [
+        [
+          {
+            "node": "Generate QR Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Australia/Sydney",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "2f272c74-a290-4546-b9a0-a1f9fd8a923a",
+  "meta": {
+    "instanceId": "f08c5d5487792f01b8b222cd5d582f9fe882c4e3ec4a0a4f0e59e4b99cde6c03"
+  },
+  "id": "wKI9bAwbDbysHY1i",
+  "tags": []
+}

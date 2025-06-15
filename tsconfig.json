@@ -34,6 +34,7 @@
     ".idea",
     ".vscode",
     ".vercel",
-    "api.test"
+    "api.test",
+    "n8n"
   ]
 }

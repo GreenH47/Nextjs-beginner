@@ -1,11 +1,15 @@
 meta {
-  name: get-exc-status-local
+  name: ui-end-local
   type: http
-  seq: 7
+  seq: 3
 }
 
-get {
+post {
   url: http://localhost:3000/api/n8nui/79
   body: none
   auth: inherit
+}
+
+headers {
+  Content-Type: application/json
 }
