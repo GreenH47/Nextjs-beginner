@@ -18,6 +18,7 @@ export default function N8nUiLandingPage() {
             <div className="w-full grid sm:grid-cols-2 gap-6 mt-4">
                 <ImagePopup src="/n8nui/workflow.png" label="Workflow diagram" />
                 <ImagePopup src="/n8nui/works.png" label="Wait‑resume flow" />
+                <ImagePopup src="/n8nui/n8nui-sequence.png" label="sequence flow" />
             </div>
 
             <StartWorkflowClient />
@@ -25,7 +26,10 @@ export default function N8nUiLandingPage() {
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-6">
                 Source&nbsp;code on&nbsp;
                 <Link href="https://github.com/n8nui/examples" className="underline" target="_blank">
-                    GitHub
+                    Code reference
+                </Link>
+                <Link href="https://github.com/GreenH47/Nextjs-beginner/tree/main/src/app/n8nui" className="underline" target="_blank">
+                    page source
                 </Link>
             </p>
         </main>
