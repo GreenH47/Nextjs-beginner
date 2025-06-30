@@ -1,0 +1,33 @@
+{
+  "name": "form_submit",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "demo-form",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3c8f1062-1b56-4ec4-80b2-0223604911c6",
+      "name": "Webhook",
+      "webhookId": "b36f8134-215e-4afd-bc96-50b0377a6275"
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3731f4d8-624e-4eea-8ea7-cf005e4f9dec",
+  "meta": {
+    "instanceId": "f08c5d5487792f01b8b222cd5d582f9fe882c4e3ec4a0a4f0e59e4b99cde6c03"
+  },
+  "id": "t81UdaS4DXYU9lDL",
+  "tags": []
+}
