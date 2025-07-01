@@ -1,3 +1,4 @@
+//src/components/lipsync/Visualizer.jsx
 import { useEffect, useRef, useState } from "react";
 import { lipsyncManager } from "@/app/lipsync/lipsyncManager";
 

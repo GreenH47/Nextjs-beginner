@@ -77,6 +77,18 @@ export default function Home() {
                     >
                         n8nui
                     </Link>
+
+
+                    <Link
+                        href="/lipsync"
+                        className="rounded-lg bg-white/90 px-6 py-3 text-sm font-medium
+                       text-blue-700 shadow transition hover:bg-white
+                       hover:scale-105 focus-visible:outline
+                       focus-visible:outline-2 focus-visible:outline-offset-2
+                       focus-visible:outline-blue-600"
+                    >
+                        using Wawa Lipsync for real-time lipsyncing
+                    </Link>
                 </nav>
             </section>
         </main>

@@ -42,6 +42,12 @@ export default function Header() {
                             </a>
                         </li>
 
+                        <li>
+                            <a href="/lipsync" className="text-blue-500 hover:underline">
+                                Wawa Lipsync
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <SignedOut>
