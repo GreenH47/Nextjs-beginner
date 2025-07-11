@@ -172,6 +172,8 @@ export const Visualizer = () => {
       const audioEl = audioRef.current;
       audioEl.src = audioUrl;
       // play() must be called in a user‑gesture context; handle errors silently
+
+      lipsyncManager.connectAudio(audioEl);
       audioEl.play().catch(() => {});
     }
   }, [audioUrl]);
