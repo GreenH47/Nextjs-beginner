@@ -18,7 +18,7 @@ export default function Home() {
                 </h1>
 
                 <p className="mt-4 max-w-prose text-lg text-white/90">
-                    Next.js 15 · Clerk Auth · Supabase · Vercel 🤘
+                    Next.js 15 · Clerk Auth · Supabase · Vercel · n8n · Wawa Lipsync🤘
                 </p>
 
                 <nav className="mt-8 flex flex-wrap justify-center gap-4">

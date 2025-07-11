@@ -1,0 +1,17 @@
+meta {
+  name: tts
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://n8n.greenhuang.com/webhook-test/text-to-speech
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "data": "text to speech testing"
+  }
+}

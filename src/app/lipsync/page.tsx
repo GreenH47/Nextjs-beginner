@@ -1,8 +1,11 @@
+
 'use client';
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Experience } from '@/components/lipsync/Experience';
 import { Visualizer } from '@/components/lipsync/Visualizer';
+import { TTSForm } from './TTSForm';
+
 
 const LipsyncPage: React.FC = () => (
     <main className="flex flex-col-reverse lg:flex-row overflow-hidden h-full w-full">
@@ -20,6 +23,10 @@ const LipsyncPage: React.FC = () => (
                     className="w-20 h-20 object-contain"
                 />
             </a>
+
+            {/* NEW – Text input → TTS */}
+            <TTSForm />
+
             <Visualizer />
         </div>
 

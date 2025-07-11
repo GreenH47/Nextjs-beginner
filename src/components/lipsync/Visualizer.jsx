@@ -1,6 +1,8 @@
 //src/components/lipsync/Visualizer.jsx
 import { useEffect, useRef, useState } from "react";
 import { lipsyncManager } from "@/app/lipsync/lipsyncManager";
+import { useLipSyncStore } from '@/app/lipsync/useLipSyncStore';
+
 
 const audioFiles = [
   {
@@ -151,6 +153,7 @@ export const Visualizer = () => {
   const volumeRef = useRef(null);
   const centroidRef = useRef(null);
 
+  const audioUrl = useLipSyncStore((s) => s.audioUrl);
   const audioRef = useRef(null);
   const [audioFile, setAudioFile] = useState("");
 
@@ -163,6 +166,15 @@ export const Visualizer = () => {
       audioRef.current?.removeEventListener("ended", handleAudioEnded);
     };
   }, []);
+
+  useEffect(() => {
+    if (audioUrl && audioRef.current) {
+      const audioEl = audioRef.current;
+      audioEl.src = audioUrl;
+      // play() must be called in a user‑gesture context; handle errors silently
+      audioEl.play().catch(() => {});
+    }
+  }, [audioUrl]);
 
   useEffect(() => {
     if (!audioFile) {
