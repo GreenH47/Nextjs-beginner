@@ -1,0 +1,234 @@
+{
+  "name": "text-to-audio",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"input_text\": \"{{ $json.body.data }}\",\n  \"voice\": \"alloy\"\n}\n",
+        "options": {}
+      },
+      "id": "414ba6c2-e5ee-4642-b128-f2d3dc768be4",
+      "name": "Set input text and TTS voice",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        480,
+        140
+      ],
+      "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/audio/speech",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openAiApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $OPENAI_API_KEY"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "tts-1"
+            },
+            {
+              "name": "input",
+              "value": "={{ $json.input_text }}"
+            },
+            {
+              "name": "voice",
+              "value": "={{ $json.voice }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "99bc80d9-f2f7-4cf0-85ed-68fcd408c083",
+      "name": "Send HTTP Request to OpenAI's TTS Endpoint",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        840,
+        140
+      ],
+      "typeVersion": 4.1,
+      "credentials": {
+        "openAiApi": {
+          "id": "KgAAm6q1JuDXpgGw",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Workflow Trigger\nYou can replace this manual trigger with another trigger type as required by your use case.",
+        "height": 339,
+        "width": 273
+      },
+      "id": "578bdd00-1018-4930-91e7-9a0503df8035",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -40,
+        -420
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Manually Set OpenAI TTS Configuration\n",
+        "height": 335,
+        "width": 273
+      },
+      "id": "664f016d-b700-40f4-a129-8ad092ac146d",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        360,
+        -360
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Send Request to OpenAI TTS API\n",
+        "height": 335,
+        "width": 302
+      },
+      "id": "7fd884ab-cabc-4b20-955c-98226a836614",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        780,
+        -340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### Configuration Options\n- \"input_text\" is the text you would like to be turned into speech, and can be replaced with a programmatic value for your use case. Bear in mind that the maximum number of tokens per API call is 4,000.\n\n- \"voice\" is the voice used by the TTS model. The default is alloy, other options can be found here: [OpenAI TTS Docs](https://platform.openai.com/docs/guides/text-to-speech)",
+        "height": 278,
+        "width": 273,
+        "color": 4
+      },
+      "id": "324a2efc-869e-4090-9a8d-763922b73f2b",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        280,
+        480
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### Output\nThe output returned by OpenAI's TTS endpoint is a .mp3 audio file (binary).\n\n\n### Credentials\nTo use this workflow, you'll have to configure and provide a valid OpenAI credential.\n",
+        "height": 278,
+        "width": 299,
+        "color": 4
+      },
+      "id": "d90f7edc-a101-4796-b2ff-d380db5794fd",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1000,
+        440
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "audio/mpeg"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1140,
+        140
+      ],
+      "id": "60d6328e-a133-497c-84b2-3859c75c5a89",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "text-to-speech",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        100,
+        140
+      ],
+      "id": "0f219d92-af50-455a-a634-46d3e2523e28",
+      "name": "Webhook",
+      "webhookId": "04a8464e-1811-4769-810d-a3edbf908e31"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Set input text and TTS voice": {
+      "main": [
+        [
+          {
+            "node": "Send HTTP Request to OpenAI's TTS Endpoint",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send HTTP Request to OpenAI's TTS Endpoint": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set input text and TTS voice",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "71b136fc-fe1e-4d93-89f3-9b7cfce2d8d1",
+  "meta": {
+    "instanceId": "f08c5d5487792f01b8b222cd5d582f9fe882c4e3ec4a0a4f0e59e4b99cde6c03"
+  },
+  "id": "u4vhVsewqm8NfF85",
+  "tags": []
+}

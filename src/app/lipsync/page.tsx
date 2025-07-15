@@ -11,22 +11,9 @@ const LipsyncPage: React.FC = () => (
     <main className="flex flex-col-reverse lg:flex-row overflow-hidden h-full w-full">
         {/* LEFT COLUMN --------------------------------------------------------*/}
         <div className="p-10 lg:max-w-2xl overflow-y-auto">
-            <a
-                className="pointer-events-auto select-none opacity-0 animate-fade-in-down animation-delay-200"
-                href="https://wawasensei.dev"
-                target="_blank"
-                rel="noreferrer"
-            >
-                <img
-                    src="/images/wawasensei.png"
-                    alt="Wawa Sensei logo"
-                    className="w-20 h-20 object-contain"
-                />
-            </a>
 
             {/* NEW – Text input → TTS */}
             <TTSForm />
-
             <Visualizer />
         </div>
 

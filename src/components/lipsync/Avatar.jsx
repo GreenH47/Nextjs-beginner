@@ -17,7 +17,7 @@ let setupMode = false;
 
 export function Avatar(props) {
   const { nodes, materials, scene } = useGLTF(
-    "/models/64f1a714fe61576b46f27ca2.glb"
+    "/lipsync/models/64f1a714fe61576b46f27ca2.glb"
   );
 
   const { smoothMovements } = useControls("Avatar", {
@@ -27,7 +27,7 @@ export function Avatar(props) {
     },
   });
 
-  const { animations } = useGLTF("/models/animations.glb");
+  const { animations } = useGLTF("/lipsync/models/animations.glb");
 
   const group = useRef();
   const { actions, mixer } = useAnimations(animations, group);
@@ -186,5 +186,5 @@ export function Avatar(props) {
   );
 }
 
-useGLTF.preload("/models/64f1a714fe61576b46f27ca2.glb");
-useGLTF.preload("/models/animations.glb");
+useGLTF.preload("/lipsync/models/64f1a714fe61576b46f27ca2.glb");
+useGLTF.preload("/lipsync/models/animations.glb");
